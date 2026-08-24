@@ -1,0 +1,4 @@
+match_type,match_value,main_category,product_category,confidence,reason
+barcode,8901595862726,ASIAN PRODUCTS,Asian Sauces,1.0,Owner-approved product override
+name,Example Product Name,SPICES & SEASONINGS,Other Seasonings,1.0,Owner-approved name override
+

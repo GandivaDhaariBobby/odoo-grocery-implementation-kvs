@@ -1,0 +1,674 @@
+{
+  "version": 1,
+  "matching_notes": [
+    "Rules are evaluated from highest to lowest priority.",
+    "Single words use word boundaries, so gin does not match ginger and rum does not match drumstick.",
+    "Source text is preserved; transliteration is used only for matching multilingual names.",
+    "Exact barcode/name overrides should be placed in manual_overrides.csv instead of hidden in code."
+  ],
+  "rules": [
+    {
+      "id": "hair_product_false_oil",
+      "priority": 1400,
+      "main_category": "BEAUTY & PERSONAL CARE",
+      "product_category": "Hair Care",
+      "confidence": 0.98,
+      "include_any": ["pomade", "hair oil", "oil hair", "shampoo", "conditioner", "hair colour", "hair color", "relaxer", "hair gel", "styler"],
+      "reason": "Personal-care form overrides food words such as oil or vegetable."
+    },
+    {
+      "id": "packaged_seafood",
+      "priority": 1390,
+      "main_category": "READY-TO-EAT & INSTANT MIXES",
+      "product_category": "Instant Meals",
+      "confidence": 0.88,
+      "include_any": ["tuna flakes", "sardine", "mackerel", "anchovy", "milkfish", "bangus", "fish fillet"],
+      "exclude_any": ["frozen"],
+      "reason": "Shelf-stable packaged seafood is a prepared food, not cooking oil or fresh produce."
+    },
+    {
+      "id": "frozen_seafood",
+      "priority": 1385,
+      "main_category": "DAIRY & FROZEN FOODS",
+      "product_category": "Frozen Foods",
+      "confidence": 0.92,
+      "include_all": ["frozen"],
+      "include_any": ["fish", "milkfish", "bangus", "fillet", "prawn", "shrimp"],
+      "reason": "Frozen seafood belongs with frozen foods in the supplied taxonomy."
+    },
+    {
+      "id": "frozen_flatbread",
+      "priority": 1380,
+      "main_category": "DAIRY & FROZEN FOODS",
+      "product_category": "Frozen Foods",
+      "confidence": 0.96,
+      "include_any": ["paratha", "pratha", "kulcha", "naan frozen"],
+      "reason": "Prepared flatbread is a frozen/ready food; Fresh in a brand name is not produce."
+    },
+    {
+      "id": "frozen_snack",
+      "priority": 1375,
+      "main_category": "DAIRY & FROZEN FOODS",
+      "product_category": "Frozen Foods",
+      "confidence": 0.92,
+      "include_any": ["vegetable samosa", "samosas", "spinach vada", "frozen vada"],
+      "exclude_any": ["samosa mix", "vada mix"],
+      "reason": "Prepared samosas and vada are frozen foods, not fresh vegetables."
+    },
+    {
+      "id": "pickles",
+      "priority": 1370,
+      "main_category": "PICKLES & CHUTNEYS",
+      "product_category": "Pickles (Achar)",
+      "confidence": 0.97,
+      "include_any": ["pickle", "pickles", "achar", "achaar", "eingelegt", "cornichon"],
+      "reason": "Explicit pickle/achar product form."
+    },
+    {
+      "id": "chutneys",
+      "priority": 1365,
+      "main_category": "PICKLES & CHUTNEYS",
+      "product_category": "Chutneys & Thokku",
+      "confidence": 0.96,
+      "include_any": ["chutney", "thokku", "relish"],
+      "reason": "Explicit chutney/thokku product form."
+    },
+    {
+      "id": "masala_mixes",
+      "priority": 1360,
+      "main_category": "SPICES & SEASONINGS",
+      "product_category": "Masala Mixes",
+      "confidence": 0.95,
+      "include_any": ["spice mix", "seasoning mix", "masala mix", "biryani spice", "curry powder mix", "gewurzmischung", "melange d epices", "mieszanka przypraw"],
+      "reason": "A dry spice/seasoning mix is not a fresh vegetable or beverage."
+    },
+    {
+      "id": "ginger_garlic_paste",
+      "priority": 1355,
+      "main_category": "COOKING PASTES & SAUCES",
+      "product_category": "Ginger-Garlic Paste",
+      "confidence": 0.98,
+      "include_any": ["ginger garlic paste", "ginger paste", "garlic paste", "ingwer knoblauch paste", "pate gingembre ail"],
+      "reason": "Specific cooking-paste form overrides broad ginger or drink matches."
+    },
+    {
+      "id": "ginger_powder",
+      "priority": 1350,
+      "main_category": "SPICES & SEASONINGS",
+      "product_category": "Powdered Masalas",
+      "confidence": 0.96,
+      "include_any": ["ginger powder", "ingwerpulver", "poudre de gingembre", "imbir mielony"],
+      "reason": "Powdered ginger is a spice, not a beverage."
+    },
+    {
+      "id": "dried_herbs_and_ginger",
+      "priority": 1345,
+      "main_category": "SPICES & SEASONINGS",
+      "product_category": "Dried Herbs",
+      "confidence": 0.95,
+      "include_any": ["dried ginger", "dry ginger", "dried curry leaves", "curry leaves", "kasuri methi", "kasoori methi", "dried fenugreek", "getrockneter ingwer", "gingembre seche"],
+      "exclude_any": ["fresh curry leaves", "fresh ginger", "cookie", "biscuit"],
+      "reason": "Dried ginger and South Asian leaves are herbs/spices."
+    },
+    {
+      "id": "fresh_vegetables",
+      "priority": 1340,
+      "main_category": "FRESH FRUITS & VEGETABLES",
+      "product_category": "Fresh Vegetables",
+      "confidence": 0.94,
+      "include_all": ["fresh"],
+      "include_any": ["aubergine", "eggplant", "brinjal", "drumstick", "moringa pod", "moringa leaves", "ginger", "turmeric", "okra", "spinach", "curry leaves", "methi leaves", "coriander leaves", "mint leaves", "gourd", "tindora", "green chilli", "green chili", "ravaya"],
+      "exclude_any": ["drink", "juice", "oil", "pickle", "pomade", "paratha", "pratha", "kulcha", "samosa", "spice mix", "powder", "dried"],
+      "reason": "Fresh plus a specific produce term is required; Fresh alone is never sufficient."
+    },
+    {
+      "id": "fresh_fruits",
+      "priority": 1335,
+      "main_category": "FRESH FRUITS & VEGETABLES",
+      "product_category": "Fresh Fruits",
+      "confidence": 0.93,
+      "include_all": ["fresh"],
+      "include_any": ["apple", "banana", "guava", "jackfruit", "lemon", "lime", "mango", "orange", "papaya", "pomegranate", "rambutan", "plum"],
+      "exclude_any": ["drink", "juice", "oil", "pickle", "powder", "dried", "candy", "flavour"],
+      "reason": "Fresh plus a specific fruit term is required; juice and branded Fresh products are excluded."
+    },
+    {
+      "id": "seasonal_fresh_items",
+      "priority": 1330,
+      "main_category": "FRESH FRUITS & VEGETABLES",
+      "product_category": "Seasonal Items",
+      "confidence": 0.90,
+      "include_any": ["betel leaves", "mango leaves", "neem leaves", "banana leaves", "lotus flower", "jasmine flower", "bermuda grass", "pandan leaves"],
+      "exclude_any": ["dried", "powder", "tea"],
+      "reason": "Seasonal or ceremonial fresh item."
+    },
+    {
+      "id": "african_oils",
+      "priority": 1320,
+      "main_category": "AFRICAN PRODUCTS",
+      "product_category": "African Oils & Condiments",
+      "confidence": 0.98,
+      "include_any": ["ghana fresh palm", "guinea fresh palm", "zomi", "palmnut", "red palm oil", "nkulenu", "trofai palm", "nigerian palm"],
+      "reason": "Strong African brand/market identity takes precedence over the generic oil family."
+    },
+    {
+      "id": "african_snacks",
+      "priority": 1315,
+      "main_category": "AFRICAN PRODUCTS",
+      "product_category": "African Snacks",
+      "confidence": 0.96,
+      "include_any": ["african plantain chips", "ghana plantain chips", "nigerian chin chin", "african snack", "tropical sun plantain"],
+      "reason": "Strong African market identity and snack form."
+    },
+    {
+      "id": "african_staples",
+      "priority": 1310,
+      "main_category": "AFRICAN PRODUCTS",
+      "product_category": "African Staples",
+      "confidence": 0.96,
+      "include_any": ["africa products shop", "afroase", "nigeria", "nigerian", "ghana world", "garri", "gari", "egusi", "poundo", "pounded yam", "fufu", "cassava", "cocoyam", "attieke", "tropiway", "heritage africa", "fola foods"],
+      "exclude_any": ["chips", "snack", "palm oil", "palmnut", "zomi"],
+      "reason": "Strong African brand, cuisine, or staple identity."
+    },
+    {
+      "id": "asian_rice_noodles",
+      "priority": 1300,
+      "main_category": "ASIAN PRODUCTS",
+      "product_category": "Asian Rice & Noodles",
+      "confidence": 0.97,
+      "include_any": ["thai jasmine rice", "glutinous rice", "rice stick", "somen", "super q", "golden phoenix", "royal tiger", "farmer rice noodle", "korean noodle", "japanese noodle", "filipino noodle"],
+      "reason": "Strong East/Southeast Asian identity plus rice/noodle form."
+    },
+    {
+      "id": "asian_sauces",
+      "priority": 1295,
+      "main_category": "ASIAN PRODUCTS",
+      "product_category": "Asian Sauces",
+      "confidence": 0.97,
+      "include_any": ["kikkoman", "lee kum kee", "datu puti", "silver swan", "healthy boy", "flying goose", "squid brand", "maekrua", "pantai", "jufran", "sriracha", "hoisin", "fish sauce", "oyster sauce", "banana sauce", "teriyaki", "sambal"],
+      "reason": "Strong East/Southeast Asian sauce or condiment identity."
+    },
+    {
+      "id": "asian_specialty",
+      "priority": 1290,
+      "main_category": "ASIAN PRODUCTS",
+      "product_category": "Asian Specialty Items",
+      "confidence": 0.90,
+      "include_any": ["mama sita", "lobo", "aroy d", "cock brand", "nata de coco", "kaong", "kimchi", "wakame", "bamboo shoot", "filipino", "philippine", "thai", "korean", "japanese"],
+      "exclude_any": ["rice", "noodle", "sauce", "vinegar"],
+      "reason": "Strong East/Southeast Asian cuisine or brand identity."
+    },
+    {
+      "id": "coconut_milk",
+      "priority": 1285,
+      "main_category": "DAIRY & FROZEN FOODS",
+      "product_category": "Milk Products",
+      "confidence": 0.92,
+      "include_any": ["coconut milk", "coconut cream", "kokosmilch", "lait de coco", "mleko kokosowe"],
+      "reason": "Coconut milk/cream is treated as a milk product in the supplied taxonomy."
+    },
+    {
+      "id": "milk_products",
+      "priority": 1280,
+      "main_category": "DAIRY & FROZEN FOODS",
+      "product_category": "Milk Products",
+      "confidence": 0.94,
+      "include_any": ["evaporated milk", "condensed milk", "milk powder", "paneer", "yoghurt", "yogurt", "cheese", "milch", "lait concentre"],
+      "reason": "Explicit dairy/milk product form."
+    },
+    {
+      "id": "alcohol",
+      "priority": 1275,
+      "main_category": "BEVERAGES",
+      "product_category": "Alcohol",
+      "confidence": 0.97,
+      "include_any": ["beer", "bier", "wine", "wein", "whisky", "whiskey", "vodka", "rum", "gin", "tequila", "liqueur", "cognac", "brandy", "champagne"],
+      "reason": "Explicit alcoholic beverage term matched as a whole word."
+    },
+    {
+      "id": "malted_drinks",
+      "priority": 1270,
+      "main_category": "BEVERAGES",
+      "product_category": "Other Drinks",
+      "confidence": 0.96,
+      "include_any": ["horlicks", "malted drink", "malt drink", "ovaltine", "bournvita"],
+      "reason": "Malted nutrition drink; not alcohol."
+    },
+    {
+      "id": "tea",
+      "priority": 1265,
+      "main_category": "BEVERAGES",
+      "product_category": "Tea",
+      "confidence": 0.94,
+      "include_any": ["tea", "chai", "tee", "the noir", "herbata"],
+      "exclude_any": ["tea tree oil"],
+      "reason": "Tea product keyword."
+    },
+    {
+      "id": "coffee",
+      "priority": 1260,
+      "main_category": "BEVERAGES",
+      "product_category": "Coffee",
+      "confidence": 0.95,
+      "include_any": ["coffee", "kaffee", "cafe", "kawa"],
+      "reason": "Coffee product keyword."
+    },
+    {
+      "id": "soft_drinks_juice",
+      "priority": 1255,
+      "main_category": "BEVERAGES",
+      "product_category": "Soft Drinks & Juice",
+      "confidence": 0.92,
+      "include_any": ["juice", "nectar", "soft drink", "soda", "lemonade", "aloe drink", "basil seed drink", "energy drink", "kokoswasser", "fruit drink", "saft", "jus", "napoj"],
+      "reason": "Explicit non-alcoholic drink or juice form."
+    },
+    {
+      "id": "other_beverages",
+      "priority": 1250,
+      "main_category": "BEVERAGES",
+      "product_category": "Other Drinks",
+      "confidence": 0.82,
+      "include_any": ["drink", "beverage", "syrup", "sharbat", "getrank", "boisson"],
+      "exclude_any": ["hair", "medicine", "cleaner"],
+      "reason": "General drink wording after specific beverage rules."
+    },
+    {
+      "id": "basmati_rice",
+      "priority": 1245,
+      "main_category": "GRAINS & FLOURS",
+      "product_category": "Basmati Rice",
+      "confidence": 0.98,
+      "include_any": ["basmati"],
+      "reason": "Basmati is an explicit rice type."
+    },
+    {
+      "id": "rice_flour",
+      "priority": 1240,
+      "main_category": "GRAINS & FLOURS",
+      "product_category": "Other Flours",
+      "confidence": 0.95,
+      "include_any": ["rice flour", "reismehl", "farine de riz", "harina de arroz", "maka ryzowa", "puttu powder"],
+      "reason": "Rice flour is flour, not whole rice."
+    },
+    {
+      "id": "regular_rice",
+      "priority": 1235,
+      "main_category": "GRAINS & FLOURS",
+      "product_category": "Regular Rice",
+      "confidence": 0.88,
+      "include_any": ["rice", "reis", "riz", "arroz", "ryz", "chawal", "sona masoori", "ponni"],
+      "exclude_any": ["rice flour", "rice noodle", "rice stick", "rice vermicelli", "puffed rice snack"],
+      "reason": "Multilingual whole-rice keyword."
+    },
+    {
+      "id": "wheat_flour",
+      "priority": 1230,
+      "main_category": "GRAINS & FLOURS",
+      "product_category": "Wheat & Flour",
+      "confidence": 0.96,
+      "include_any": ["atta", "wheat flour", "whole wheat", "maida", "chapati flour", "chapatti flour", "weizenmehl", "farine de ble"],
+      "reason": "Wheat/atta flour keyword; Fresh in Chakki Fresh is a marketing term."
+    },
+    {
+      "id": "other_flours",
+      "priority": 1225,
+      "main_category": "GRAINS & FLOURS",
+      "product_category": "Other Flours",
+      "confidence": 0.89,
+      "include_any": ["flour", "mehl", "farine", "harina", "maka", "ragi", "tapioca", "cornflour", "gram flour", "semolina", "sattu"],
+      "reason": "General flour or milled grain keyword."
+    },
+    {
+      "id": "cereal_grains",
+      "priority": 1220,
+      "main_category": "GRAINS & FLOURS",
+      "product_category": "Cereal Grains",
+      "confidence": 0.90,
+      "include_any": ["millet", "oats", "barley", "sorghum", "quinoa", "kambu", "jowar", "hafer", "hirse"],
+      "reason": "Cereal grain keyword."
+    },
+    {
+      "id": "dal_lentils",
+      "priority": 1215,
+      "main_category": "PULSES & LEGUMES",
+      "product_category": "Dal (Split Lentils)",
+      "confidence": 0.96,
+      "include_any": ["toor dal", "masoor", "moong dal", "mung dal", "urad dal", "orid dal", "chana dal", "dhal", "lentil", "linse", "lentille", "soczewica"],
+      "reason": "Split dal/lentil keyword."
+    },
+    {
+      "id": "whole_legumes",
+      "priority": 1210,
+      "main_category": "PULSES & LEGUMES",
+      "product_category": "Whole Legumes",
+      "confidence": 0.93,
+      "include_any": ["chickpea", "chick peas", "whole chana", "kidney beans", "black eye beans", "cow peas", "bohnen", "pois chiches", "ciecierzyca"],
+      "reason": "Whole legume/bean keyword."
+    },
+    {
+      "id": "dry_peas_beans",
+      "priority": 1205,
+      "main_category": "PULSES & LEGUMES",
+      "product_category": "Dry Peas & Beans",
+      "confidence": 0.90,
+      "include_any": ["dry peas", "dried peas", "soya chunks", "soya mince", "horse gram", "moth beans"],
+      "reason": "Dry peas, beans, or textured soya keyword."
+    },
+    {
+      "id": "ghee_butter",
+      "priority": 1200,
+      "main_category": "OILS & GHEE",
+      "product_category": "Ghee & Butter",
+      "confidence": 0.96,
+      "include_any": ["ghee", "butter", "butterschmalz"],
+      "exclude_any": ["butter biscuit", "butter cookies", "peanut butter"],
+      "reason": "Ghee or dairy butter keyword."
+    },
+    {
+      "id": "coconut_oil",
+      "priority": 1195,
+      "main_category": "OILS & GHEE",
+      "product_category": "Coconut Oil",
+      "confidence": 0.96,
+      "include_any": ["coconut oil", "kokosol", "huile de coco"],
+      "exclude_any": ["hair", "skin", "body"],
+      "reason": "Food coconut oil keyword."
+    },
+    {
+      "id": "traditional_oils",
+      "priority": 1190,
+      "main_category": "OILS & GHEE",
+      "product_category": "Traditional Oils",
+      "confidence": 0.88,
+      "include_any": ["mustard oil", "sesame oil", "sunflower oil", "groundnut oil", "cooking oil", "rapeseed oil", "speiseol", "huile de moutarde", "olej gorczycowy"],
+      "exclude_any": ["pomade", "hair", "in vegetable oil", "tuna", "sardine", "lamp oil"],
+      "reason": "Cooking oil keyword with personal-care and canned-food exclusions."
+    },
+    {
+      "id": "whole_nuts",
+      "priority": 1185,
+      "main_category": "NUTS & SEEDS",
+      "product_category": "Whole Nuts",
+      "confidence": 0.93,
+      "include_any": ["almond", "cashew", "walnut", "pistachio", "peanut", "hazelnut", "mandel", "noix de cajou"],
+      "exclude_any": ["oil", "butter", "drink", "flavour"],
+      "reason": "Whole nut keyword."
+    },
+    {
+      "id": "seeds",
+      "priority": 1180,
+      "main_category": "NUTS & SEEDS",
+      "product_category": "Seeds",
+      "confidence": 0.91,
+      "include_any": ["sesame seed", "sunflower seed", "pumpkin seed", "flax seed", "fenugreek seed", "chia seed", "til seed"],
+      "reason": "Edible seed keyword."
+    },
+    {
+      "id": "nut_seed_specialty",
+      "priority": 1175,
+      "main_category": "NUTS & SEEDS",
+      "product_category": "Specialty Items",
+      "confidence": 0.90,
+      "include_any": ["makhana", "lotus seed", "fox nut", "popcorn kernels"],
+      "reason": "Nuts/seeds specialty product."
+    },
+    {
+      "id": "dried_coconut",
+      "priority": 1170,
+      "main_category": "DRY FRUITS",
+      "product_category": "Coconut Products",
+      "confidence": 0.92,
+      "include_any": ["desiccated coconut", "dried coconut", "coconut chips", "grated coconut", "shredded coconut", "coconut powder"],
+      "reason": "Dried coconut product."
+    },
+    {
+      "id": "dried_fruits",
+      "priority": 1165,
+      "main_category": "DRY FRUITS",
+      "product_category": "Dried Fruits",
+      "confidence": 0.93,
+      "include_any": ["raisin", "sultana", "dry dates", "dried dates", "dried fig", "apricot", "prune", "dried plum", "alu bukhara", "dried mango", "dried papaya", "trockenfruchte"],
+      "reason": "Dried fruit keyword."
+    },
+    {
+      "id": "curry_pastes_purees",
+      "priority": 1160,
+      "main_category": "COOKING PASTES & SAUCES",
+      "product_category": "Curry Paste",
+      "confidence": 0.88,
+      "include_any": ["curry paste", "tamarind paste", "tomato paste", "spinach puree", "spinach purree", "cooking paste", "puree"],
+      "exclude_any": ["juice", "baby food"],
+      "reason": "Cooking paste or puree keyword."
+    },
+    {
+      "id": "sauces_condiments",
+      "priority": 1155,
+      "main_category": "COOKING PASTES & SAUCES",
+      "product_category": "Sauces & Condiments",
+      "confidence": 0.88,
+      "include_any": ["sauce", "condiment", "ketchup", "mayonnaise", "mustard condiment", "imlee sauce"],
+      "exclude_any": ["asian", "kikkoman", "lee kum kee", "sriracha", "hoisin"],
+      "reason": "General cooking sauce or condiment keyword."
+    },
+    {
+      "id": "instant_noodles",
+      "priority": 1150,
+      "main_category": "NOODLES & PASTA",
+      "product_category": "Instant Noodles",
+      "confidence": 0.95,
+      "include_any": ["instant noodle", "ramen", "maggi noodles", "kottu mee", "cup noodle"],
+      "reason": "Instant noodle form."
+    },
+    {
+      "id": "dried_noodles",
+      "priority": 1145,
+      "main_category": "NOODLES & PASTA",
+      "product_category": "Dried Noodles",
+      "confidence": 0.89,
+      "include_any": ["noodle", "vermicelli", "semia", "seviyan", "misua", "fadennudeln"],
+      "exclude_any": ["instant", "ramen", "rice stick", "asian"],
+      "reason": "Dried noodle/vermicelli keyword."
+    },
+    {
+      "id": "pasta",
+      "priority": 1140,
+      "main_category": "NOODLES & PASTA",
+      "product_category": "Pasta",
+      "confidence": 0.95,
+      "include_any": ["pasta", "spaghetti", "macaroni", "penne", "fusilli"],
+      "reason": "Pasta shape/product keyword."
+    },
+    {
+      "id": "dosa_idli_mix",
+      "priority": 1135,
+      "main_category": "READY-TO-EAT & INSTANT MIXES",
+      "product_category": "Dosa & Idli Mixes",
+      "confidence": 0.92,
+      "include_any": ["dosa mix", "idli mix", "uttappam mix", "appam mix"],
+      "reason": "Dosa/idli ready-mix keyword."
+    },
+    {
+      "id": "meal_mixes",
+      "priority": 1130,
+      "main_category": "READY-TO-EAT & INSTANT MIXES",
+      "product_category": "Meal Mixes",
+      "confidence": 0.86,
+      "include_any": ["kheer mix", "payasam mix", "dessert mix", "gulab jamun mix", "jalebi mix", "brownie mix"],
+      "reason": "Prepared meal or dessert mix."
+    },
+    {
+      "id": "snack_mixes",
+      "priority": 1125,
+      "main_category": "READY-TO-EAT & INSTANT MIXES",
+      "product_category": "Snack Mixes",
+      "confidence": 0.92,
+      "include_any": ["pakora mix", "spring roll mix", "samosa mix", "pani puri kit", "vada mix"],
+      "reason": "Snack preparation mix."
+    },
+    {
+      "id": "instant_meals",
+      "priority": 1120,
+      "main_category": "READY-TO-EAT & INSTANT MIXES",
+      "product_category": "Instant Meals",
+      "confidence": 0.84,
+      "include_any": ["ready to eat", "instant meal", "microwave meal", "retort pouch"],
+      "reason": "Ready-to-eat or instant meal wording."
+    },
+    {
+      "id": "chips_wafers",
+      "priority": 1115,
+      "main_category": "SNACKS & SAVORY",
+      "product_category": "Chips & Wafers",
+      "confidence": 0.94,
+      "include_any": ["chips", "crisps", "wafers", "takis", "pringles", "slanty"],
+      "exclude_any": ["coconut chips", "banana chips african", "plantain chips african"],
+      "reason": "Packaged chips/wafers keyword."
+    },
+    {
+      "id": "fried_snacks",
+      "priority": 1110,
+      "main_category": "SNACKS & SAVORY",
+      "product_category": "Fried Snacks",
+      "confidence": 0.93,
+      "include_any": ["namkeen", "bhujia", "chakli", "murukku", "bakarwadi", "kodubale", "chekkalu", "thattai", "karasev", "mixture"],
+      "reason": "South Asian fried savory snack keyword."
+    },
+    {
+      "id": "baked_snacks",
+      "priority": 1105,
+      "main_category": "SNACKS & SAVORY",
+      "product_category": "Baked Snacks",
+      "confidence": 0.91,
+      "include_any": ["biscuit", "cookie", "cracker", "rusk", "papad", "pappad", "oreo", "galettes", "prinzen"],
+      "reason": "Biscuit/cookie/cracker form overrides ingredient words such as ginger."
+    },
+    {
+      "id": "packaged_sweets",
+      "priority": 1100,
+      "main_category": "SWEETS & CONFECTIONERY",
+      "product_category": "Packaged Sweets",
+      "confidence": 0.94,
+      "include_any": ["gulab jamun", "rasgulla", "halwa", "raj bhog", "burfi", "laddu", "ladoo", "soan papdi", "kaju katli", "mysore pak"],
+      "exclude_any": ["mix"],
+      "reason": "Packaged South Asian sweet keyword."
+    },
+    {
+      "id": "candies_chocolate_gum",
+      "priority": 1095,
+      "main_category": "SWEETS & CONFECTIONERY",
+      "product_category": "Chocolates & Candies",
+      "confidence": 0.94,
+      "include_any": ["chocolate", "candy", "toffee", "chewing gum", "bubble gum", "lollipop", "bonbon", "mentos", "wrigley", "mishri", "misri", "sugar candy"],
+      "reason": "Candy, chocolate, or chewing-gum product form."
+    },
+    {
+      "id": "dried_sweets",
+      "priority": 1090,
+      "main_category": "SWEETS & CONFECTIONERY",
+      "product_category": "Dried Sweets",
+      "confidence": 0.88,
+      "include_any": ["petha", "dry fruit sweet", "dried sweet"],
+      "reason": "Dried sweet keyword."
+    },
+    {
+      "id": "sugar_jaggery_seasoning",
+      "priority": 1085,
+      "main_category": "SPICES & SEASONINGS",
+      "product_category": "Other Seasonings",
+      "confidence": 0.90,
+      "include_any": ["jaggery", "shakkar", "brown sugar", "cane sugar", "raw sugar", "gur", "goor", "panela", "rock salt", "black salt"],
+      "exclude_any": ["candy", "sweet"],
+      "reason": "Cooking sweetener or salt; the supplied grain/flour taxonomy has no sugar category."
+    },
+    {
+      "id": "whole_spices",
+      "priority": 1080,
+      "main_category": "SPICES & SEASONINGS",
+      "product_category": "Whole Masalas",
+      "confidence": 0.89,
+      "include_any": ["cumin seed", "coriander seed", "cardamom", "clove", "cinnamon stick", "star anise", "bay leaves", "peppercorn", "whole masala"],
+      "reason": "Whole spice keyword."
+    },
+    {
+      "id": "powdered_spices",
+      "priority": 1075,
+      "main_category": "SPICES & SEASONINGS",
+      "product_category": "Powdered Masalas",
+      "confidence": 0.88,
+      "include_any": ["turmeric powder", "chilli powder", "chili powder", "cumin powder", "coriander powder", "pepper powder", "masala powder", "gewurzpulver"],
+      "reason": "Powdered spice keyword."
+    },
+    {
+      "id": "hair_care",
+      "priority": 1070,
+      "main_category": "BEAUTY & PERSONAL CARE",
+      "product_category": "Hair Care",
+      "confidence": 0.92,
+      "include_any": ["henna hair", "hair cream", "hair tonic", "hair dye"],
+      "reason": "Hair-care product keyword."
+    },
+    {
+      "id": "skin_care",
+      "priority": 1065,
+      "main_category": "BEAUTY & PERSONAL CARE",
+      "product_category": "Skin Care",
+      "confidence": 0.91,
+      "include_any": ["soap", "toothpaste", "face wash", "body lotion", "skin cream", "balm", "vaseline", "cologne", "deodorant"],
+      "reason": "Skin or personal-care keyword."
+    },
+    {
+      "id": "ayurvedic_wellness",
+      "priority": 1060,
+      "main_category": "BEAUTY & PERSONAL CARE",
+      "product_category": "Ayurvedic Products",
+      "confidence": 0.90,
+      "include_any": ["chyawanprash", "ayurvedic", "isabgol", "psyllium", "hajmola", "amla powder", "neem powder", "tulsi drops", "moringa powder"],
+      "reason": "Ayurvedic or wellness product keyword."
+    },
+    {
+      "id": "laundry",
+      "priority": 1055,
+      "main_category": "HOUSEHOLD & CLEANING",
+      "product_category": "Laundry Care",
+      "confidence": 0.95,
+      "include_any": ["laundry", "washing powder", "detergent", "fabric softener", "waschmittel"],
+      "reason": "Laundry-care keyword."
+    },
+    {
+      "id": "cleaning",
+      "priority": 1050,
+      "main_category": "HOUSEHOLD & CLEANING",
+      "product_category": "Cleaning Products",
+      "confidence": 0.94,
+      "include_any": ["cleaner", "bleach", "disinfectant", "dishwash", "surface spray", "reiniger"],
+      "reason": "Household-cleaning keyword."
+    },
+    {
+      "id": "other_household",
+      "priority": 1045,
+      "main_category": "HOUSEHOLD & CLEANING",
+      "product_category": "Other Household",
+      "confidence": 0.84,
+      "include_any": ["aluminium foil", "cling film", "garbage bag", "incense stick", "mosquito coil"],
+      "reason": "General household product keyword."
+    },
+    {
+      "id": "cigarettes_tobacco",
+      "priority": 1040,
+      "main_category": "TOBACCO & RELATED",
+      "product_category": "Cigarettes",
+      "confidence": 0.98,
+      "include_any": ["cigarette", "zigarette", "tobacco", "tabak", "shisha tobacco", "pepe fine"],
+      "reason": "Tobacco product keyword."
+    },
+    {
+      "id": "tobacco_accessories",
+      "priority": 1035,
+      "main_category": "TOBACCO & RELATED",
+      "product_category": "Tobacco Accessories",
+      "confidence": 0.94,
+      "include_any": ["rolling paper", "cigarette filter", "lighter", "clipper lighter", "matches", "streichholz"],
+      "reason": "Tobacco-accessory keyword."
+    }
+  ]
+}
