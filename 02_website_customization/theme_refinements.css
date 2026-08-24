@@ -1,0 +1,117 @@
+/* Consolidated KVS theme refinements applied through Odoo Online. */
+:root {
+  --kvs-green: #0f5132;
+  --kvs-green-deep: #0a3c25;
+  --kvs-saffron: #c97b2a;
+  --kvs-ivory: #faf8f3;
+  --kvs-surface: #ffffff;
+  --kvs-text: #1f2420;
+  --kvs-muted: #666f68;
+  --kvs-border: #e7dfd3;
+  --kvs-focus: #f2b45f;
+  --kvs-radius: 8px;
+}
+
+body:not(.editor_enable) {
+  background: var(--kvs-ivory);
+  color: var(--kvs-text);
+  letter-spacing: 0;
+}
+
+body:not(.editor_enable) :where(.btn, .form-control, .form-select) {
+  border-radius: 6px;
+}
+
+body:not(.editor_enable) :where(.btn-primary, .btn-fill-primary, .a-submit) {
+  background: var(--kvs-green);
+  border-color: var(--kvs-green);
+  color: #fff;
+  font-weight: 800;
+}
+
+body:not(.editor_enable) :where(.btn-primary, .btn-fill-primary, .a-submit):hover {
+  background: var(--kvs-green-deep);
+  border-color: var(--kvs-green-deep);
+}
+
+body:not(.editor_enable) :where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--kvs-focus) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+body:not(.editor_enable) header#top .o_searchbar_form {
+  min-width: 220px;
+  max-width: min(520px, 46vw);
+}
+
+body:not(.editor_enable).o_website_url_home main h2,
+body:not(.editor_enable).o_website_url_home .s_dynamic_snippet_title h2 {
+  color: var(--kvs-green-deep);
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  line-height: 1.18;
+}
+
+body:not(.editor_enable) #top_menu_collapse_mobile {
+  background: var(--kvs-green-deep) !important;
+  color: #fff !important;
+  width: min(88vw, 360px) !important;
+}
+
+body:not(.editor_enable) #top_menu_collapse_mobile :where(.nav-link, .accordion-button, .list-group-item) {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+}
+
+body:not(.editor_enable) #top_menu_collapse_mobile .btn-close,
+body:not(.editor_enable) #top_menu_collapse_mobile .accordion-button::after {
+  filter: brightness(0) invert(1) !important;
+}
+
+body:not(.editor_enable) #top_menu_collapse_mobile .o_searchbar_form .oe_search_button {
+  background: var(--kvs-saffron) !important;
+  border-color: var(--kvs-saffron) !important;
+  color: #fff !important;
+}
+
+body:not(.editor_enable) .o_wsale_filmstrip {
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scrollbar-color: #9eaaa2 transparent;
+  scrollbar-width: thin;
+}
+
+body:not(.editor_enable) .o_wsale_filmstrip > * {
+  scroll-snap-align: start;
+}
+
+body:not(.editor_enable).o_website_url_contactus main :where(.s_title, .s_faq_list, .s_accordion_image, .s_map) {
+  display: none !important;
+}
+
+body:not(.editor_enable) button[data-bs-target^="#o_payment_demo_modal"],
+body:not(.editor_enable) [id^="o_payment_demo_modal"] {
+  display: none !important;
+}
+
+body:not(.editor_enable) footer img.o_we_custom_image {
+  height: auto !important;
+  max-height: 160px !important;
+  max-width: 160px !important;
+  object-fit: contain !important;
+  width: 160px !important;
+}
+
+@media (max-width: 575.98px) {
+  body:not(.editor_enable) :where(.o_cookie_bar, #website_cookies_bar) {
+    font-size: 0.84rem;
+    padding: 0.55rem 0.75rem;
+  }
+
+  body:not(.editor_enable) footer img.o_we_custom_image {
+    max-height: 120px !important;
+    max-width: 120px !important;
+    width: 120px !important;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "odoo_surface": "Website Builder > Dynamic Product Snippet",
+  "section_title": "Best Sellers",
+  "filter": {
+    "label": "Newest Products",
+    "data_filter_id": 8
+  },
+  "category": {
+    "label": "Best Sellers",
+    "record_id": 89
+  },
+  "records_requested": 5,
+  "desktop_elements": 4,
+  "small_screen_elements": 2,
+  "editor_maintained": true
+}

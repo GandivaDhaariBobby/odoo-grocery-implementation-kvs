@@ -1,0 +1,58 @@
+html {
+  scroll-behavior: auto !important;
+}
+
+body:not(.editor_enable) #wrapwrap,
+body:not(.editor_enable) #wrap,
+body:not(.editor_enable) main {
+  overflow-x: clip;
+}
+
+body:not(.editor_enable) header#top,
+body:not(.editor_enable) header#top.o_header_fixed,
+body:not(.editor_enable) header#top.o_header_affixed,
+body:not(.editor_enable) header#top.o_header_is_scrolled,
+body:not(.editor_enable) header#top.o_top_fixed_element,
+body:not(.editor_enable) header#top .o_header_hide_on_scroll,
+body:not(.editor_enable) header#top .o_header_show_on_scroll {
+  animation: none !important;
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+body:not(.editor_enable) #wrapwrap,
+body:not(.editor_enable).o_website_url_home #wrap {
+  padding-top: 0 !important;
+}
+
+body:not(.editor_enable).o_website_url_home #kvs-trust-strip {
+  margin-top: 0 !important;
+}
+
+body:not(.editor_enable) :where(
+  .oe_product_cart,
+  .oe_product_cart img,
+  .o_wsale_product_grid_wrapper,
+  .o_wsale_product_grid_wrapper img,
+  .s_dynamic_snippet_products article,
+  .s_dynamic_snippet_products article img,
+  .carousel-control-prev,
+  .carousel-control-next
+) {
+  transition: none !important;
+  will-change: auto !important;
+}
+
+body:not(.editor_enable) :where(
+  .oe_product_cart:hover,
+  .oe_product_cart:hover img,
+  .o_wsale_product_grid_wrapper:hover,
+  .o_wsale_product_grid_wrapper:hover img,
+  .s_dynamic_snippet_products article:hover,
+  .s_dynamic_snippet_products article:hover img
+) {
+  transform: none !important;
+}

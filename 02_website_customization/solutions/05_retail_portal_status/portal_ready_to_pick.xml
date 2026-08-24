@@ -1,0 +1,6 @@
+<!-- Parent view: sale_stock.portal_my_orders -->
+<data>
+  <xpath expr="//span[@t-elif=&quot;order.delivery_status == 'started'&quot;]" position="replace">
+    <span t-elif="order.delivery_status == 'started'" class="badge rounded-pill text-bg-primary">Ready to pick</span>
+  </xpath>
+</data>

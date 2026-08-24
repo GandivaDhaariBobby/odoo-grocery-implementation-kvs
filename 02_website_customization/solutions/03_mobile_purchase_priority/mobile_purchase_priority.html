@@ -1,0 +1,93 @@
+<style id="kvs-mobile-purchase-priority">
+@media (max-width: 767.98px) {
+  body:not(.editor_enable) #product_detail :where(
+    .o_carousel_product_outer,
+    .carousel-inner,
+    .carousel-item,
+    .o_product_detail_img_wrapper
+  ) {
+    max-height: 260px;
+  }
+
+  body:not(.editor_enable) #product_detail img.product_detail_img {
+    height: auto;
+    max-height: 260px;
+    object-fit: contain;
+    width: auto;
+  }
+
+  body:not(.editor_enable) #o_wsale_product_cta_section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.75rem !important;
+  }
+
+  body:not(.editor_enable) #o_wsale_cta_wrapper {
+    margin-bottom: 0.75rem;
+    order: -3;
+  }
+
+  body:not(.editor_enable) #o_wsale_cta_wrapper :where(#add_to_cart_wrap, .btn) {
+    width: 100%;
+  }
+
+  body:not(.editor_enable) #product_details .kvs-product-summary:not(.is-expanded) {
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    max-height: 2.9em !important;
+    overflow: hidden !important;
+  }
+}
+
+body:not(.editor_enable) #product_details .kvs-description-toggle {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #0f5132;
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 800;
+  padding: 0.25rem 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+</style>
+
+<script id="kvs-product-description-disclosure">
+(() => {
+  const enhance = () => {
+    if (document.body.classList.contains("editor_enable")) return;
+
+    document.querySelectorAll(
+      "#product_details .o_wsale_product_details_content_section_title .oe_structure"
+    ).forEach((description) => {
+      if (description.dataset.kvsDescriptionReady === "true") return;
+      if (description.textContent.trim().length < 320) return;
+
+      description.dataset.kvsDescriptionReady = "true";
+      description.classList.add("kvs-product-summary");
+
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "kvs-description-toggle";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.textContent = "Read full description";
+
+      toggle.addEventListener("click", () => {
+        const expanded = description.classList.toggle("is-expanded");
+        toggle.setAttribute("aria-expanded", String(expanded));
+        toggle.textContent = expanded ? "Show less" : "Read full description";
+      });
+
+      description.insertAdjacentElement("afterend", toggle);
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", enhance, { once: true });
+  } else {
+    enhance();
+  }
+})();
+</script>

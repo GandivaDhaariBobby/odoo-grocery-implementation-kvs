@@ -1,0 +1,83 @@
+body:not(.editor_enable) :where(
+  .oe_product_cart,
+  .o_wsale_product_grid_wrapper,
+  .s_dynamic_snippet_products .card,
+  .s_dynamic_snippet_products article
+) {
+  background: #fff;
+  border: 1px solid #e7dfd3;
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+body:not(.editor_enable) :where(
+  .oe_product_cart img,
+  .o_wsale_product_grid_wrapper img,
+  .s_dynamic_snippet_products article img
+) {
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  object-fit: contain;
+  width: 100%;
+}
+
+body:not(.editor_enable) :where(
+  .oe_product_cart .o_wsale_products_item_title a,
+  .s_dynamic_snippet_products article h6 a
+) {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  min-height: 2.25em;
+  overflow: hidden;
+}
+
+body:not(.editor_enable) .oe_product_cart .o_wsale_product_sub {
+  align-items: center !important;
+  display: grid !important;
+  gap: 0.5rem !important;
+  grid-template-columns: minmax(0, 1fr) 40px !important;
+  min-height: 40px;
+}
+
+body:not(.editor_enable) .oe_product_cart .product_price {
+  margin: 0 !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+
+body:not(.editor_enable) .oe_product_cart :where(.o_wsale_product_btn, .o_wsale_product_action_row) {
+  align-items: center !important;
+  display: flex !important;
+  height: 40px !important;
+  justify-content: center !important;
+  min-width: 40px !important;
+  width: 40px !important;
+}
+
+body:not(.editor_enable) .oe_product_cart .o_wsale_product_btn_primary {
+  align-items: center !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  font-size: 1rem !important;
+  height: 40px !important;
+  justify-content: center !important;
+  max-width: 40px !important;
+  min-height: 40px !important;
+  min-width: 40px !important;
+  padding: 0 !important;
+  width: 40px !important;
+}
+
+body:not(.editor_enable) :where(
+  .oe_product_cart .o_wsale_product_btn_primary .o_label,
+  .oe_product_cart .o_add_wishlist,
+  .o_add_compare,
+  .o_add_compare_placeholder,
+  .o_wsale_compare_button,
+  a[href*="/shop/compare"],
+  button[data-action*="compare"]
+) {
+  display: none !important;
+}
