@@ -1,4 +1,3 @@
-# By - GandivaDhaariBobby
 # Odoo Grocery Retail Implementation — KVS Cash & Carry
 
 A complete, single-handed Odoo Online implementation for a multicultural grocery store
