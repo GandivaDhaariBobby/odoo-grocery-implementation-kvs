@@ -10,7 +10,7 @@ within that constraint, and the measured result.
 
 > **Companion project:** the retail-scale hardware integration from this implementation
 > was generalized into a standalone open-source tool —
-> [Universal Odoo Scale Toolkit](https://github.com/YOUR_USERNAME/universal-odoo-scale-toolkit) —
+> [Universal Odoo Scale Toolkit](https://github.com/GandivaDhaariBobby/universal-odoo-scale-toolkit) —
 > which discovers unknown serial scale protocols and generates installable Odoo
 > Virtual IoT adapters.
 
